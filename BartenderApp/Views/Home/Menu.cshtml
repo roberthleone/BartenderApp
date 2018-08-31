@@ -1,0 +1,33 @@
+﻿@model IEnumerable<BartenderApp.Models.Drink>
+
+@{ Layout = null; }
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Drink Menu</title>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr><td><h2>Menu</h2></td>
+        </thead>
+        <tbody>
+            
+            @foreach (var d in Model)
+            {
+                <tr>
+                    <td><h3>@d.Name</h3></td>
+                    <td>@d.Description</td>
+                </tr>
+                <tr>
+                    <td>@($"{d.Price:c2}")</td>
+                    <td>ingredients: @d.Ingredients</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</body>
+</html>

@@ -1,0 +1,91 @@
+﻿@model IEnumerable<BartenderApp.Models.Drink>
+
+@{ Layout = null; }
+
+<!--<!DOCTYPE html>-->
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Drink Menu</title>
+</head>
+<body>
+
+    <a asp-controller="Home" asp-action="Menu">Menu</a>
+
+    <table style="columns:auto; border:thin">
+        <thead>
+            <tr><td><h2>Menu</h2></td>
+        </thead>
+        <tbody>
+            @foreach (var d in Model)
+            {
+                <tr>
+                    <td><h3>@d.Name</h3></td>
+                </tr>
+                <tr>
+                    <td><i>@d.Description</i></td>
+                </tr>
+                <tr>
+                    <td><i>@($"{d.Price:c2}")</i></td>
+                </tr>
+                <tr>
+                    <td><i>ingredients</i>: @d.Ingredients</td>
+                </tr>
+                <tr><td><a asp-action="AddDrink(@d)">Testing</a></td></tr>
+            }
+        </tbody>
+    </table>
+
+
+    <table>
+        <thead>
+            <tr>
+                <td>
+                    <h1>
+                        Order Queue
+                    </h1>
+                </td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var d in Model)
+            {
+                <tr>
+                    <td>@d.Name</td>
+                    <td>@($"{d.Price:c2}")</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+
+
+</body>
+</html>
+
+<!--
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Working with Visual Studio</title>
+    <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.min.css" />
+</head>
+<body class="p-2">
+    <h3 class="text-center">Pick Drink</h3>
+    <form asp-action="AddDrink" method="post">
+        <div class="form-group">
+            <label asp-for="Select">Name:</label>
+            <input asp-for="Select<>" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label asp-for="Price">Price:</label>
+            <input asp-for="Price" class="form-control" />
+        </div>
+        <div class="text-center">
+            <button type="submit" class="btn btn-primary">Add</button>
+            <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+        </div>
+    </form>
+</body>
+</html>-->
